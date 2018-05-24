@@ -1,0 +1,2 @@
+# Ginny
+A Discord Bot
