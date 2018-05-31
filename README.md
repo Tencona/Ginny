@@ -1,2 +1,2 @@
 # Ginny
-A Discord Bot
+A Discord Bot using discord.js
