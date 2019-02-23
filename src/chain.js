@@ -21,6 +21,22 @@ module.exports = {
 				group.push(this.parts[i + 2]);
 				this.saveGroup(new Group(group));
 			}
+			if (this.parts[i + 3] !== undefined) {
+				group.push(this.parts[i + 3]);
+				this.saveGroup(new Group(group));
+			}
+			if (this.parts[i + 4] !== undefined) {
+				group.push(this.parts[i + 4]);
+				this.saveGroup(new Group(group));
+			}
+			if (this.parts[i + 5] !== undefined) {
+				group.push(this.parts[i + 5]);
+				this.saveGroup(new Group(group));
+			}
+			if (this.parts[i + 6] !== undefined) {
+				group.push(this.parts[i + 6]);
+				this.saveGroup(new Group(group));
+			}
 			group = [];
 		}
 	},
