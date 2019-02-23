@@ -9,33 +9,16 @@ module.exports = {
 		this.groupParts();
 	},
 	groupParts: function() {
-		//go through this.parts and take every group of 2 and 3 and find those in the database and update their count
 		var group = [];
 		for (var i = 0; i < this.parts.length - 1; i++) {
-			group.push(this.parts[i]);
-			if (this.parts[i + 1] !== undefined) {
-				group.push(this.parts[i + 1]);
-				this.saveGroup(new Group(group));
-			}
-			if (this.parts[i + 2] !== undefined) {
-				group.push(this.parts[i + 2]);
-				this.saveGroup(new Group(group));
-			}
-			if (this.parts[i + 3] !== undefined) {
-				group.push(this.parts[i + 3]);
-				this.saveGroup(new Group(group));
-			}
-			if (this.parts[i + 4] !== undefined) {
-				group.push(this.parts[i + 4]);
-				this.saveGroup(new Group(group));
-			}
-			if (this.parts[i + 5] !== undefined) {
-				group.push(this.parts[i + 5]);
-				this.saveGroup(new Group(group));
-			}
-			if (this.parts[i + 6] !== undefined) {
-				group.push(this.parts[i + 6]);
-				this.saveGroup(new Group(group));
+			//Length of chain
+			for (let p = 0; p < 4; p++) {
+				if (this.parts[i + p] !== undefined) {
+					group.push(this.parts[i + p]);
+					if (group.length > 1) {
+						this.saveGroup(new Group(group));
+					}
+				}
 			}
 			group = [];
 		}
