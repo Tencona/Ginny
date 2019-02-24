@@ -19,7 +19,7 @@ client.on('ready', () => {
 client.on('message', msg => {
 	if (msg.author.username === 'Ginny') return; //Temporary
 	if (msg.content === 'status') {
-		msg.reply(memory.data.groups.map(group => group.id + ' ' + group.count));
+		msg.reply(`Status: ${client.status} (${ClientStatuses[client.status]})\nUptime: ${client.uptime}`);
 		return;
 	}
 	if (msg.content === 'purge channel') {
