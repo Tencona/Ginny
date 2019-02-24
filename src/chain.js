@@ -33,5 +33,8 @@ module.exports = {
 			group.count = 1;
 			memory.data.groups.push(group);
 		}
+
+		//Tree
+		memory.data.tree.processWords(group.words);
 	},
 };
