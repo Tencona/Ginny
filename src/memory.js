@@ -11,5 +11,7 @@ module.exports = {
 	},
 	load: function() {
 		this.data = JSON.parse(fs.readFileSync('./data.json'));
+		if(!this.data.groups) this.data.groups = [];
+		if(!this.data.tree) this.data.tree = new Tree();
 	},
 };
