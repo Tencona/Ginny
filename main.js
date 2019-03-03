@@ -5,6 +5,24 @@ const chain = require('./src/chain.js');
 const memory = require('./src/memory.js');
 const Group = require('./src/group.js');
 
+const litImp = require('./src/dataimport/literImporter.js');
+const fileIO = require('./src/dataimport/file-io.js');
+
+litImp.baseDirectory = fileIO.readDir(litImp.datasetDirPath);
+litImp.getCategories();
+litImp.getStories();
+var totalStories = litImp.stories.length;
+
+litImp.stories.forEach((story, index) => {
+	chain.process(story.read());
+	if (index % 100 === 0 || index + 1 === totalStories)
+		console.log(
+			`Processed ${parseFloat(((index + 1) / totalStories) * 100).toFixed(
+				2
+			)}% (${index}/${totalStories})`
+		);
+});
+
 var token = fs.readFileSync('appToken.config', 'utf8');
 if (token === undefined || token === '') throw 'BAD TOKEN';
 

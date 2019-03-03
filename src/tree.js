@@ -12,8 +12,7 @@ class Tree {
 		if (!currentNode) {
 			currentNode = new Node(currentWord, undefined, undefined);
 			this.nodes.push(currentNode);
-		}
-		else {
+		} else {
 			currentNode.count += 1;
 		}
 
@@ -25,8 +24,7 @@ class Tree {
 			if (!nextNode) {
 				nextNode = new Node(currentWord, currentNode, undefined);
 				currentNode.children.push(nextNode);
-			}
-			else {
+			} else {
 				nextNode.count += 1;
 			}
 			currentNode = nextNode;
