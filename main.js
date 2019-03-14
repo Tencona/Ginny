@@ -15,12 +15,11 @@ var totalStories = litImp.stories.length;
 
 litImp.stories.forEach((story, index) => {
 	chain.process(story.read());
-	if (index % 100 === 0 || index + 1 === totalStories)
+	if (index % 100 === 0 || index + 1 === totalStories) {
 		console.log(
-			`Processed ${parseFloat(((index + 1) / totalStories) * 100).toFixed(
-				2
-			)}% (${index}/${totalStories})`
+			`Processed ${parseFloat(((index + 1) / totalStories) * 100).toFixed(2)}% (${index}/${totalStories})`
 		);
+	}
 });
 
 var token = fs.readFileSync('appToken.config', 'utf8');
@@ -45,9 +44,9 @@ client.on('message', msg => {
 	if (msg.author.username === 'Ginny') return; //Temporary
 	if (msg.content === 'status') {
 		msg.reply(
-			`Status: ${client.status} (${
-				ClientStatuses[client.status]
-			})\nUptime: ${extrapolateTimeString(client.uptime)}`
+			`Status: ${client.status} (${ClientStatuses[client.status]})\nUptime: ${extrapolateTimeString(
+				client.uptime
+			)}`
 		);
 		return;
 	}
