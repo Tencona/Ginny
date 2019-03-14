@@ -5,6 +5,8 @@ const chain = require('./src/chain.js');
 const memory = require('./src/memory.js');
 const Group = require('./src/group.js');
 
+const history = require('./src/history.js');
+
 //To be addressed later. This can technically import all of the stories and parse them correctly.
 //When building trees from entire stories, JSON.stringify breaks trying to traverse that deep.
 //When building smaller word groups, JSON.stringify breaks trying to handle an array that large.
@@ -41,6 +43,8 @@ client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	memory.load();
 	console.log(`Loaded with ${memory.data.groups.length} word groups`);
+	history.init(client);
+	history.fetchAndProcessMessages();
 });
 
 client.on('message', msg => {

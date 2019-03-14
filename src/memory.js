@@ -10,8 +10,18 @@ module.exports = {
 		fs.writeFileSync('./data.json', JSON.stringify(this.data));
 	},
 	load: function() {
-		this.data = JSON.parse(fs.readFileSync('./data.json'));
-		if(!this.data.groups) this.data.groups = [];
-		if(!this.data.tree) this.data.tree = new Tree();
+		if (fs.existsSync('./data.json')) {
+			let content = fs.readFileSync('./data.json');
+			if (content === '') {
+				this.data = {};
+			} else {
+				this.data = JSON.parse(content);
+			}
+		} else {
+			fs.writeFileSync('./data.json', '{}');
+			this.data = {};
+		}
+		if (!this.data.groups) this.data.groups = [];
+		if (!this.data.tree) this.data.tree = new Tree();
 	},
 };
