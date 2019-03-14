@@ -1,8 +1,8 @@
 const Node = require('./node.js');
 
 class Tree {
-	constructor() {
-		this.nodes = [];
+	constructor(nodes) {
+		this.nodes = nodes || [];
 	}
 
 	//This needs to be passed much larger arrays. Full sentences or entire messages?
