@@ -1,9 +1,35 @@
+//! npm i forever
+//! forever start ginny
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const chain = require('./src/chain.js');
 const memory = require('./src/memory.js');
 const Group = require('./src/group.js');
+const Firestore = require('@google-cloud/firestore');
+
+const firestore = new Firestore({
+	projectId: 'ginny-0',
+	keyFilename: 'ginny-cd578de10076.json',
+});
+
+const docMetadata = firestore.doc('memory/metadata');
+
+// Enter new data into the document.
+docMetadata
+	.set(
+		{
+			lastStart: Date.now(),
+		},
+		{ merge: true }
+	)
+	.then(() => {
+		// Document created successfully.
+	});
+docMetadata.get().then(doc => {
+	console.log(doc.get('lastStart'));
+});
 
 //To be addressed later. This can technically import all of the stories and parse them correctly.
 //When building trees from entire stories, JSON.stringify breaks trying to traverse that deep.
