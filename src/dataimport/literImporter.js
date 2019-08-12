@@ -4,7 +4,7 @@ module.exports = {
 	test: function() {
 		console.log('literImporter.js test');
 	},
-	datasetDirPath: 'C:\\Datasets\\liter',
+	datasetDirPath: 'E:\\Datasets\\liter',
 	baseDirectory: {},
 	categories: [],
 	stories: [],
@@ -12,9 +12,7 @@ module.exports = {
 
 	getCategories() {
 		console.log(`Getting categories`);
-		var dir = this.baseDirectory.directories.find(
-			dir => dir.name === 'categories'
-		);
+		var dir = this.baseDirectory.directories.find(dir => dir.name === 'categories');
 		dir.deepCrawl();
 		var s = '';
 
@@ -35,9 +33,9 @@ module.exports = {
 
 			if (index % 10 === 0 || index + 1 === dir.files.length)
 				console.log(
-					`Processed ${parseFloat(
-						((index + 1) / dir.files.length) * 100
-					).toFixed(2)}% (${index}/${dir.files.length})`
+					`Processed ${parseFloat(((index + 1) / dir.files.length) * 100).toFixed(2)}% (${index}/${
+						dir.files.length
+					})`
 				);
 			categories.push(category);
 		});
@@ -48,9 +46,7 @@ module.exports = {
 
 	getStories() {
 		console.log('Getting stories');
-		var dir = this.baseDirectory.directories.find(
-			dir => dir.name === 'story_text'
-		);
+		var dir = this.baseDirectory.directories.find(dir => dir.name === 'story_text');
 
 		let start = new Date().getTime();
 		dir.deepCrawl();
@@ -64,9 +60,9 @@ module.exports = {
 			stories.push(new Story(this, file, this.metadatas[file.path]));
 			if (index % 500 === 0 || index + 1 === dir.files.length)
 				console.log(
-					`Matched ${parseFloat(
-						((index + 1) / dir.files.length) * 100
-					).toFixed(2)}% (${index}/${dir.files.length})`
+					`Matched ${parseFloat(((index + 1) / dir.files.length) * 100).toFixed(2)}% (${index}/${
+						dir.files.length
+					})`
 				);
 		});
 

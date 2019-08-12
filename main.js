@@ -34,23 +34,24 @@ docMetadata.get().then(doc => {
 //To be addressed later. This can technically import all of the stories and parse them correctly.
 //When building trees from entire stories, JSON.stringify breaks trying to traverse that deep.
 //When building smaller word groups, JSON.stringify breaks trying to handle an array that large.
-// const litImp = require('./src/dataimport/literImporter.js');
-// const fileIO = require('./src/dataimport/file-io.js');
+const litImp = require('./src/dataimport/literImporter.js');
+const fileIO = require('./src/dataimport/file-io.js');
 
-// litImp.baseDirectory = fileIO.readDir(litImp.datasetDirPath);
-// litImp.getCategories();
-// litImp.getStories();
-// var totalStories = litImp.stories.length;
+litImp.baseDirectory = fileIO.readDir(litImp.datasetDirPath);
+litImp.getCategories();
+litImp.getStories();
+var totalStories = litImp.stories.length;
 
-// litImp.stories.forEach((story, index) => {
-// 	chain.process(story.read());
-// 	if (index % 100 === 0 || index + 1 === totalStories) {
-// 		console.log(
-// 			`Processed ${parseFloat(((index + 1) / totalStories) * 100).toFixed(2)}% (${index}/${totalStories})`
-// 		);
-// 	}
-// });
+litImp.stories.forEach((story, index) => {
+	chain.process(story.read());
+	if (index % 100 === 0 || index + 1 === totalStories) {
+		console.log(
+			`Processed ${parseFloat(((index + 1) / totalStories) * 100).toFixed(2)}% (${index}/${totalStories})`
+		);
+	}
+});
 
+debugger;
 var token = fs.readFileSync('appToken.config', 'utf8');
 if (token === undefined || token === '') throw 'BAD TOKEN';
 
