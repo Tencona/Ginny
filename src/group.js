@@ -1,7 +1,7 @@
 class Group {
 	constructor(arr) {
-		this.words = arr;
 		this.id = arr.join(',');
+		this.words = arr;
 	}
 }
 
