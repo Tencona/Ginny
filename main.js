@@ -48,6 +48,7 @@ litImp.stories.forEach((story, index) => {
 		console.log(
 			`Processed ${parseFloat(((index + 1) / totalStories) * 100).toFixed(2)}% (${index}/${totalStories})`
 		);
+		// console.log(`Processed ${Object.keys(memory.data.groups).length} groups`);
 	}
 });
 
