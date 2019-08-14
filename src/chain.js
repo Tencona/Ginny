@@ -48,16 +48,15 @@ module.exports = {
 
 	saveGroup: function(group) {
 		var foundGroup;
-		//memory.data.groups.find() isn't sustainable. It needs to be object properties, not an array.
-		if (memory.data.groups.length > 0) foundGroup = memory.data.groups.find(g => g.id === group.id);
+		if (memory.data.groups.length > 0) foundGroup = memory.data.groups[group.id];
 		if (foundGroup) {
 			foundGroup.count += 1;
 		} else {
 			group.count = 1;
-			memory.data.groups.push(group);
+			memory.data.groups[group.id] = group;
 		}
 
 		//Tree
-		memory.data.tree.processWords(group.words);
+		// memory.data.tree.processWords(group.words);
 	},
 };
